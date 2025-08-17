@@ -1,1 +1,241 @@
-<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mes Liens Gaming RGB</title> <!-- Font Awesome pour les icônes --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <style> /* Fond étoilé animé */ body { margin: 0; padding: 0; font-family: 'Orbitron', sans-serif; color: white; text-align: center; height: 100vh; overflow: hidden; background: black; } canvas#stars { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; } header { padding: 40px 20px 20px; } header img { width: 140px; border-radius: 50%; border: 3px solid #0ff; box-shadow: 0 0 25px #0ff; margin-bottom: 15px; } h1 { font-size: 2.5rem; color: #0ff; text-shadow: 0 0 15px #0ff; margin: 10px 0; } p { font-size: 1.2rem; opacity: 0.8; } .links { display: flex; flex-direction: column; gap: 20px; margin: 40px auto; width: 90%; max-width: 400px; } .link-btn { display: flex; align-items: center; justify-content: center; gap: 12px; background: rgba(20, 20, 30, 0.9); padding: 18px; border-radius: 15px; text-decoration: none; color: white; font-size: 1.3rem; font-weight: bold; position: relative; overflow: hidden; z-index: 1; cursor: pointer; } .link-btn i { font-size: 1.5rem; } /* Effet glow RGB */ .link-btn::before { content: ""; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; background: linear-gradient( 270deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff, #ff0000 ); background-size: 600% 600%; border-radius: 15px; z-index: -1; animation: rgbGlow 8s linear infinite; } @keyframes rgbGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } } .link-btn:hover { transform: scale(1.08); box-shadow: 0 0 30px #0ff, 0 0 60px #0ff; } footer { margin: 20px; font-size: 0.9rem; opacity: 0.7; } </style> </head> <body> <!-- Fond étoiles --> <canvas id="stars"></canvas> <header> <img src="ChatGPT Image 7 août 2025, 14_55_13.png" alt="Mon Logo"> <h1>🌌 Galaxy Gamer</h1> <p>Mes Liens RGB</p> </header> <main> <div class="links"> <a href="https://discord.gg/5Qx2wApw" class="link-btn sound-btn"> <i class="fab fa-discord"></i> Discord </a> <a href="https://www.tiktok.com/@mehdi.9990?is_from_webapp=1&sender_device=pc" class="link-btn sound-btn"> <i class="fab fa-tiktok"></i> TikTok </a> <a href="https://steamcommunity.com/profiles/76561199758231518/" class="link-btn sound-btn"> <i class="fab fa-steam"></i> Steam </a> <a href="https://www.xbox.com/en-US/play/user/mehdibzh/" class="link-btn sound-btn"> <i class="fab fa-xbox"></i> Xbox </a> <a href="https://launcher.store.epicgames.com/u/bf6ab5ed39df48b68ce74785bfdc7888/" class="link-btn sound-btn"> <i class="fas fa-gamepad"></i> Epic Games </a> </div> </main> <footer> © 2025 - MEHDI 999 </footer> <!-- Script étoiles animées --> <script> const canvas = document.getElementById("stars"); const ctx = canvas.getContext("2d"); canvas.width = window.innerWidth; canvas.height = window.innerHeight; let stars = []; function Star(x, y, size, speed) { this.x = x; this.y = y; this.size = size; this.speed = speed; } Star.prototype.update = function() { this.y += this.speed; if (this.y > canvas.height) { this.y = 0; this.x = Math.random() * canvas.width; } }; Star.prototype.draw = function() { ctx.fillStyle = "white"; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }; function initStars(count) { stars = []; for (let i = 0; i < count; i++) { let x = Math.random() * canvas.width; let y = Math.random() * canvas.height; let size = Math.random() * 2; let speed = Math.random() * 1 + 0.2; stars.push(new Star(x, y, size, speed)); } } function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); stars.forEach(star => { star.update(); star.draw(); }); requestAnimationFrame(animate); } initStars(200); animate(); window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initStars(200); }); /* 🎶 Gestion des sons quand on clique sur un bouton */ const buttons = document.querySelectorAll(".sound-btn"); const clickSound = new Audio("https://www.soundjay.com/button/sounds/button-29.mp3"); buttons.forEach(btn => { btn.addEventListener("click", (e) => { e.preventDefault(); // empêche d'ouvrir le lien direct clickSound.currentTime = 0; clickSound.play(); // après 300ms → ouvre le lien setTimeout(() => { window.location.href = btn.href; }, 300); }); }); </script> <!-- 🎶 Musique de fond --> <audio id="bg-music" autoplay loop> <source src="https://files.catbox.moe/t7nsyq.mp3" type="audio/mpeg"> </audio> <script> const music = document.getElementById("bg-music"); music.volume = 0; // commence muet (bloque pas navigateur) // dès que l’utilisateur clique une fois → active le son document.addEventListener("click", () => { if (music.volume === 0) { music.volume = 0.2; // volume doux } }, { once: true }); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Liens Gaming RGB</title>
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Fond étoilé animé */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+      background: black;
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+    }
+
+    header {
+      padding: 40px 20px 20px;
+    }
+
+    header img {
+      width: 140px;
+      border-radius: 50%;
+      border: 3px solid #0ff;
+      box-shadow: 0 0 25px #0ff;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #0ff;
+      text-shadow: 0 0 15px #0ff;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 40px auto;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(20, 20, 30, 0.9);
+      padding: 18px;
+      border-radius: 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .link-btn i {
+      font-size: 1.5rem;
+    }
+
+    /* Effet glow RGB */
+    .link-btn::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(
+        270deg, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, 
+        #0000ff, #4b0082, #8f00ff, #ff0000
+      );
+      background-size: 600% 600%;
+      border-radius: 15px;
+      z-index: -1;
+      animation: rgbGlow 8s linear infinite;
+    }
+
+    @keyframes rgbGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .link-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px #0ff, 0 0 60px #0ff;
+    }
+
+    footer {
+      margin: 20px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fond étoiles -->
+  <canvas id="stars"></canvas>
+
+  <header>
+    <img src="ChatGPT Image 7 août 2025, 14_55_13.png" alt="Mon Logo">
+    <h1>🌌 Galaxy Gamer</h1>
+    <p>Mes Liens RGB</p>
+  </header>
+
+  <main>
+    <div class="links">
+      <a href="https://discord.gg/5Qx2wApw" class="link-btn sound-btn">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+      <a href="https://www.tiktok.com/@mehdi.9990?is_from_webapp=1&sender_device=pc" class="link-btn sound-btn">
+        <i class="fab fa-tiktok"></i> TikTok
+      </a>
+      <a href="https://steamcommunity.com/profiles/76561199758231518/" class="link-btn sound-btn">
+        <i class="fab fa-steam"></i> Steam
+      </a>
+      <a href="https://account.xbox.com/profile?gamertag=mehdibzh
+/" class="link-btn sound-btn">
+        <i class="fab fa-xbox"></i> Xbox
+      </a>
+      <a href="https://launcher.store.epicgames.com/u/bf6ab5ed39df48b68ce74785bfdc7888/" class="link-btn sound-btn">
+        <i class="fas fa-gamepad"></i> Epic Games
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 - MEHDI 999
+  </footer>
+
+  <!-- Script étoiles animées -->
+  <script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+
+    function Star(x, y, size, speed) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.speed = speed;
+    }
+
+    Star.prototype.update = function() {
+      this.y += this.speed;
+      if (this.y > canvas.height) {
+        this.y = 0;
+        this.x = Math.random() * canvas.width;
+      }
+    };
+
+    Star.prototype.draw = function() {
+      ctx.fillStyle = "white";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+    function initStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let size = Math.random() * 2;
+        let speed = Math.random() * 1 + 0.2;
+        stars.push(new Star(x, y, size, speed));
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(star => {
+        star.update();
+        star.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    initStars(200);
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initStars(200);
+    });
+
+    /* 🎶 Gestion des sons quand on clique sur un bouton */
+    const buttons = document.querySelectorAll(".sound-btn");
+
+    const clickSound = new Audio("https://www.soundjay.com/button/sounds/button-29.mp3");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault(); // empêche d'ouvrir le lien direct
+        clickSound.currentTime = 0;
+        clickSound.play();
+
+        // après 300ms → ouvre le lien
+        setTimeout(() => {
+          window.location.href = btn.href;
+        }, 300);
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
