@@ -7,7 +7,6 @@
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Fond étoilé animé */
     body {
       margin: 0;
       padding: 0;
@@ -19,11 +18,22 @@
       background: black;
     }
 
+    /* Vidéo en arrière-plan */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2; /* Derrière les étoiles */
+    }
+
     canvas#stars {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -1;
+      z-index: -1; /* Par-dessus la vidéo */
       width: 100%;
       height: 100%;
     }
@@ -122,6 +132,12 @@
 </head>
 <body>
 
+  <!-- Vidéo en fond -->
+  <video autoplay muted loop id="background-video">
+    <source src="subaru-brz-under-the-rain-nfs.1920x1080.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture vidéo.
+  </video>
+
   <!-- Fond étoiles -->
   <canvas id="stars"></canvas>
 
@@ -142,8 +158,7 @@
       <a href="https://steamcommunity.com/profiles/76561199758231518/" class="link-btn sound-btn">
         <i class="fab fa-steam"></i> Steam
       </a>
-      <a href="https://account.xbox.com/profile?gamertag=mehdibzh
-/" class="link-btn sound-btn">
+      <a href="https://account.xbox.com/profile?gamertag=mehdibzh" class="link-btn sound-btn">
         <i class="fab fa-xbox"></i> Xbox
       </a>
       <a href="https://launcher.store.epicgames.com/u/bf6ab5ed39df48b68ce74785bfdc7888/" class="link-btn sound-btn">
@@ -223,11 +238,9 @@
 
     buttons.forEach(btn => {
       btn.addEventListener("click", (e) => {
-        e.preventDefault(); // empêche d'ouvrir le lien direct
+        e.preventDefault(); 
         clickSound.currentTime = 0;
         clickSound.play();
-
-        // après 300ms → ouvre le lien
         setTimeout(() => {
           window.location.href = btn.href;
         }, 300);
@@ -237,5 +250,3 @@
 
 </body>
 </html>
-
-
